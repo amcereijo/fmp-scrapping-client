@@ -1,16 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Matches from './screens/Matches';
+import { StyleSheet, View, Text } from 'react-native';
 
-export default function App() {
+
+const BlankPage = () => {
   return (
     <View style={styles.container}>
-      <Matches/>
-      <StatusBar style="auto" />
+      <Text>FMP client</Text>
     </View>
   );
 }
+
+export default BlankPage;
 
 const styles = StyleSheet.create({
   container: {
@@ -21,3 +21,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+

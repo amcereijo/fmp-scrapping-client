@@ -42,9 +42,6 @@ const Match = (props: { matches: Game[]}) => {
 
   return (
     <View >
-      <View style={styles.matchHeader}>
-        <Text style={styles.matchHeader}>Convocatorias:</Text>
-      </View>
       <ScrollView style={styles.container}>
       {
       matches.forEach((match: Game, index: number) => {

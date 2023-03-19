@@ -1,38 +1,57 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Home from './containter/Home';
 import Matches from './containter/Matches'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Preferences from './containter/Preferences';
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function createIcon(name: any, focused: boolean) {
+  return <MaterialCommunityIcons
+    name={name}
+    size={24}
+    color={focused ? "#e91e63" : "black"}
+  />
+}
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{
-        headerStyle: {
-          backgroundColor: '#f4511e',
-        },
-        headerTitleAlign: 'center',
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-        title: 'FMP Client'
-      }}>
-        <Stack.Screen
-          name="Home"
+      <Drawer.Navigator
+        initialRouteName="Inicio"
+      >
+        <Drawer.Screen
+          key='home'
+          name='Inicio'
           component={Home}
           options={{
+            drawerIcon:({focused}) =>
+              createIcon('home', focused)
           }}
+        />
 
+        <Drawer.Screen
+          key='preferences'
+          name='Configuración'
+          component={Preferences}
+          options={{
+            drawerIcon:({focused}) =>
+              createIcon('account-settings', focused)
+          }}
         />
-        <Stack.Screen
-          name="Matches"
+
+        <Drawer.Screen
+          key='matches'
+          name='Convocatorias'
           component={Matches}
-          options={({ route }) => ({ title: 'Partidos' })}
+          options={{
+            drawerIcon:({focused}) =>
+              createIcon('calendar', focused)
+          }}
         />
-      </Stack.Navigator>
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }

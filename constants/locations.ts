@@ -1,7 +1,7 @@
 export const LOCATION_MAP: Record<string, string> = {
   'I.D. MUN. BASICA LOS ROSALES': 'https://goo.gl/maps/qeXJ7gxMLVSds6PYA',
   'POLIDEPORTIVO ANDRES TORREJON (EL SOTO)': 'https://goo.gl/maps/e4mGFgMcFGEKFr8o7',
-  'INSTALACIÓN DEPORTIVA BÁSICA DRÁCENA 42': 'https://goo.gl/maps/CNrtBEiLKkebLYQF8',
+  'INSTALACIÓN DEPORTIVA BÁSICA DRÁCENA 42': 'https://goo.gl/maps/Nvgcsg2rfkvFbBE6A',
   'CENTRO DEP. MUN. FRANCISCO FDEZ. OCHOA': 'https://g.page/CDMFFOCHOA?share',
   'POLIDEPORTIVO PLATA Y CASTAÑAR': 'https://goo.gl/maps/1c9EBwyBemvRMLr58',
   'CENTRO DEPORTIVO LAURA OTER': 'https://goo.gl/maps/qjqPdMusKRBWv1UU6',

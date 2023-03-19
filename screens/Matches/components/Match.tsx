@@ -17,7 +17,7 @@ function createMatchMessages(matchMoment: moment.Moment, game: Game) {
   let text = '';
   text += `Próximo partido *${matchMoment.format("dddd D MMMM")}* a las *${game.time}* en ${game.location}`;
   text += `\n${game.local} - ${game.visit}`;
-  text += '\n1.';
+  text += '\n\n1.';
   text += '\n\nPortero:';
   text += '\n\nDelegado:';
   if ((game.local || '').match(DEFAULT_TEAM_NAME)) {
@@ -25,9 +25,9 @@ function createMatchMessages(matchMoment: moment.Moment, game: Game) {
   }
   text += '\n\n';
 
-  console.log(leage);
-  console.log('\n');
-  console.log(text);
+  // console.log(leage);
+  // console.log('\n');
+  // console.log(text);
 
   return { leage, text };
 }
@@ -40,34 +40,34 @@ const Match = (props: { matches: Game[]}) => {
 
   const texts: JSX.Element[] = [];
 
+  matches.forEach((match: Game, index: number) => {
+    const momentNow = moment();
+    const matchMoment = moment(match.date, 'DD/MM/YYYY');
+
+    if(momentNow.add(DEFAULT_TIME_IN_DAYS, 'days').isAfter(matchMoment)) {
+      if(match.time) {
+        const {leage, text} = createMatchMessages(matchMoment, match);
+
+        texts.push(
+          <View key={`match-${index}`} style={index%2===0 ? styles.gameView : styles.gameViewOdd}>
+            <Text style={styles.leage} key={`leage-${index}`}>{leage}</Text>
+            <Text style={styles.match} key={`game-${index}`}>{text}</Text>
+            <Button
+              onPress={async () => {
+                await openWhatsapp(text);
+              }}
+              title="Enviar por Whatsapp"
+            />
+          </View>
+        );
+      }
+    }
+  })
+
   return (
     <View >
       <ScrollView style={styles.container}>
-      {
-      matches.forEach((match: Game, index: number) => {
-        const momentNow = moment();
-        const matchMoment = moment(match.date, 'DD/MM/YYYY');
-
-        if(momentNow.add(DEFAULT_TIME_IN_DAYS, 'days').isAfter(matchMoment)) {
-          if(match.time) {
-            const {leage, text} = createMatchMessages(matchMoment, match);
-            texts.push(
-              <View key={`match-${index}`} style={index%2===0 ? styles.gameView : styles.gameViewOdd}>
-                <Text style={styles.leage} key={`leage-${index}`}>{leage}</Text>
-                <Text style={styles.match} key={`game-${index}`}>{text}</Text>
-                <Button
-                  onPress={async () => {
-                    await openWhatsapp(text);
-                  }}
-                  title="Enviar por Whatsapp"
-                />
-              </View>
-            );
-          }
-        }
-      })
-      }
-      {texts}
+        {texts}
       </ScrollView>
     </View>
   );

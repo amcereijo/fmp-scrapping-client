@@ -1,18 +1,13 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import BlankPage from '../../screens/BlankPage';
 
 
 export type HomeProps = { navigation: any };
 
 export default function Home({ navigation }: HomeProps) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text></Text>
-      <Button
-        title="Ir a convocatorias"
-        onPress={() => navigation.navigate('Matches')}
-      />
-    </View>
+    <BlankPage/>
   );
 }
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import BlankPage from '../../screens/BlankPage';
+import SelectClub from '../../screens/SelectClub';
 
-export type HomeProps = { navigation: any };
 
-export default function Home({ navigation }: HomeProps) {
+export type ConfigClubProps = { navigation: any };
+
+export default function ConfigClub({ navigation }: ConfigClubProps) {
   return (
-    <BlankPage/>
+    <SelectClub navigation={navigation}/>
   );
 }
 

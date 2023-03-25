@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Matches from '../../screens/Matches';
+import MatchesScreen from '../../screens/Matches';
 
-export default function App() {
+export default function Matches() {
   return (
     <View style={styles.container}>
-      <Matches/>
+      <MatchesScreen/>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',

@@ -1,43 +1,61 @@
-import React, {useState} from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import React, {useContext, useEffect} from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import Match from './components/Match';
-import { getMatches, Game } from '../../api/fmp';
+import { getMatches } from '../../api/fmp';
+import Loading from '../../common/components/Loading';
+import { AppContext } from '../../contexts/AppContext';
 
-const Matches = () => {
-  const [matchesData, setMatchesData] = useState<{matches: Game[]}>({matches: []});
+const MatchesScreen = () => {
+  const {club, setClub} = useContext(AppContext)
+
+  useEffect(() => {
+    if (!club) {
+      return;
+    }
+
+    async function loadMatches () {
+      if (!club) {
+        return
+      }
+
+      try {
+        const matches = await getMatches(club?.code);
+        setClub({
+          ...club,
+          matches
+        });
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
+    if(!club.matches) {
+      loadMatches();
+    }
+
+  }, [club, setClub]);
+
+
+  if (!club || !club.matches) {
+    return <Loading size={100} color="blue" />
+  }
 
   return (
     <View style={styles.container}>
-      <View>
       {
-      !matchesData.matches.length &&  <Button
-        onPress={async () => {
-          const matches = await getMatches();
-          console.log('Matches', matches)
-          setMatchesData({
-            matches: matches,
-          })
-        }}
-        title="Obtener convocatorias"
-      />
-      }
-      </View>
-      {
-        matchesData.matches.length
-          ? <Match matches={matchesData.matches}></Match>
+        club.matches?.length
+          ? <Match matches={club.matches}></Match>
           : <></>
       }
     </View>
   );
 }
 
-export default Matches;
+export default MatchesScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',

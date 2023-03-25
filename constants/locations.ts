@@ -13,5 +13,9 @@ export const LOCATION_MAP: Record<string, string> = {
   'POLID. MUNICIPAL JOSE CABALLERO-PABELLON': 'https://goo.gl/maps/19999gsdGBVvSLf66',
   'NUEVO BAZTAN, POLIDEPORTIVO MUNICIPAL': 'https://goo.gl/maps/NhmLFpSSERccZwNLA',
   'INST. DEPORT. MUNICIPAL LAS TABLAS': 'https://goo.gl/maps/TjXiyutu3577h1fd7',
-  'COLEGIO CASTILLA': 'https://goo.gl/maps/46VLXAwwxnZTFQKz9'
-};
+  'COLEGIO CASTILLA': 'https://goo.gl/maps/46VLXAwwxnZTFQKz9',
+  'POLIDEPORTIVO DEL VAL-PISTA CUBIERTA': 'https://goo.gl/maps/hfMpK9bmhcapRdzq6',
+  'POLIDEPORTIVO DEL VAL-PISTA DESCUBIERTA': 'https://goo.gl/maps/hfMpK9bmhcapRdzq6',
+  'CENTRO DEP. MUN. WILFRED AGBONAVBARE': 'https://goo.gl/maps/5W8VN8f4y9z8tTz87',
+  'PARQUE DEPORTIVO PUERTA DE HIERRO': 'https://goo.gl/maps/DSE4XP867LuJzCuD8',
+} as const;

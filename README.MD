@@ -12,3 +12,9 @@ React native app for scrapping fmp.es website.
 * Install expo app on your device https://expo.dev/client
 ## Run project
 * run `expo start` o `npx expo start`
+
+## Build android
+```
+› npm install -g eas-cli
+› eas build -p android --profile preview
+```
